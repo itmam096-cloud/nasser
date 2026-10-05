@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام السيولة | للقروض الشخصية وتحصيل الديون</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==================== 1. المتغيرات والنمط العام (ألوان يوم التأسيس) ==================== */
+        :root {
+            --primary-brown: #3C2415;  /* البني الداكن */
+            --secondary-clay: #7A3B2E; /* الأحمر الطيني / التأسيس */
+            --accent-gold: #C29B38;    /* الذهبي الترابي */
+            --bg-light: #FDFBF7;       /* أوف وايت / خلفية ترابية نقية */
+            --card-bg: #F4EFE6;        /* بيج فاتح للبطاقات */
+            --text-dark: #231810;      /* بني داكن ناعم للنصوص */
+            --text-muted: #5C4A3E;     /* بني متوسط للنصوص الفرعية */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            direction: rtl;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==================== 2. الهيدر (بدون قوائم أو تصنيفات) ==================== */
+        header {
+            background-color: var(--primary-brown);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--bg-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        .btn-cta {
+            background-color: var(--secondary-clay);
+            color: var(--white);
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: transform 0.2s, background-color 0.3s;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .btn-cta:hover {
+            background-color: var(--primary-brown);
+            transform: translateY(-2px);
+        }
+
+        /* ==================== 3. قسم البطل (Hero Section) ==================== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, #23150C 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
+            color: var(--bg-light);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #D2C4B5;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--secondary-clay);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #5C2A20;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent-gold);
+            color: var(--bg-light);
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-brown);
+        }
+
+        /* ==================== 4. الميزات التنافسية ==================== */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-brown);
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(60, 36, 21, 0.05);
+            text-align: center;
+            border-bottom: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--secondary-clay);
+            box-shadow: 0 10px 15px -3px rgba(60, 36, 21, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-clay);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-brown);
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==================== 5. الأسئلة الشائعة ==================== */
+        .faq {
+            background-color: var(--white);
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(122, 59, 46, 0.1);
+            border-bottom: 1px solid rgba(122, 59, 46, 0.1);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid #E6DCCE;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 1.2rem;
+            border-right: 4px solid var(--secondary-clay);
+        }
+
+        .faq-item h4 {
+            color: var(--primary-brown);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==================== 6. الفوتر (الذيل) ==================== */
+        footer {
+            background-color: var(--primary-brown);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p, .footer-col li {
+            color: #D2C4B5;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            list-style: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #523421;
+            color: #A89584;
+            font-size: 0.85rem;
+        }
+
+        /* زر واتساب عائم */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--secondary-clay);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-brown);
+        }
+
+        /* ==================== 7. التجاوب والتوافق مع الجوال ==================== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .btn-cta {
+                padding: 0.5rem 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .btn-whatsapp, .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .features, .faq {
+                padding: 2.5rem 1rem;
+            }
+
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i> إتمام <span>السيولة</span>
+            </div>
+            <a href="https://wa.me/966531996511" class="btn-cta">طلب تمويل سريع</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <h1>حلول مالية متكاملة لتوفير السيولة وسداد المديونيات وتحصيل الديون</h1>
+            <p>نساعدك على تنظيم جميع التزاماتك المالية وتوفير تمويل شخصي بسيولة نقدية فورية بإجراءات آمنة وسريعة وفق الأنظمة المعتمدة.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/966531996511" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> تواصل عبر الواتساب
+                </a>
+                <a href="tel:0531996511" class="btn-outline">
+                    <i class="fa-solid fa-phone"></i> اتصل بنا الآن
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="services">
+        <div class="section-title">
+            <h2>لماذا تختار "إتمام السيولة"؟</h2>
+            <p>نوفر لك الأمان والسرعة لتجاوز جميع العقبات المالية</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                <h3>سيولة نقدية فورية</h3>
+                <p>تأمين سيولة سريعة لتلبية احتياجاتك الطارئة وتغطية المديونيات دون تأخير.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3>تسديد القروض الميسر</h3>
+                <p>حلول عملية لتسديد القروض القديمة واستخراج تمويل جديد يصل إلى 24 أو 36 راتباً.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3>تحصيل الديون</h3>
+                <p>إدارة وتحصيل الديون المتعثرة للأفراد والشركات بطرق قانونية واحترافية تضمن حقك.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <h3>أمان وسرية تامة</h3>
+                <p>دراسة الحالات بشفافية مطلقة مع الحفاظ الكامل على سرية بياناتك الماليّة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="section-title">
+            <h2>الأسئلة الشائعة</h2>
+            <p>إجابات شفافة ومباشرة على أبرز التساؤلات قبل البدء</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <h4>هل توجد مراجعة للحالة قبل البدء في التنفيذ؟</h4>
+                <p>نعم، نقوم بمراجعة الوضع المالي والدخل والالتزامات والسجل الائتماني أولاً لتحديد إمكانية التنفيذ واختيار الطريق الأنسب لك.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>ما هي المستندات المطلوبة لتوفير التمويل أو سداد المديونية؟</h4>
+                <p>تشمل غالباً: الهوية الوطنية، تعريف بالراتب، كشف حساب بنكي لآخر 3 أشهر، وتفاصيل المديونية الحالية.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>كيف تعمل خدمة تحصيل الديون لدى إتمام السيولة؟</h4>
+                <p>نعمل من خلال فريق متخصص ومؤهل قانونياً للتواصل والتفاوض مع المدينين بطرق ودية ونظامية تضمن سرعة التحصيل وتجنب النزاعات الطويلة.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>شركة إتمام السيولة</h3>
+                <p>مؤسسة متخصصة في تقديم الاستشارات والحلول المالية المبتكرة، توفير السيولة النقدية، سداد المديونيات، وتحصيل الديون بكفاءة وأمان في كافة أنحاء المملكة.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>تواصل معنا</h3>
+                <p><i class="fa-solid fa-location-dot"></i> المملكة العربية السعودية</p>
+                <p><i class="fa-solid fa-phone"></i> 0531996511</p>
+                <p><i class="fa-solid fa-envelope"></i> info@etmamsilooa.sa</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            حقوق النشر © 2026 محفوظة لشركة إتمام السيولة.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/966531996511" class="floating-whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
